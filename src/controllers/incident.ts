@@ -6,7 +6,8 @@ import  Incident  from "../models/Incident";
 const key: string = process.env.API_KEY || "" ;
 let url: string = `https://api.openweathermap.org/data/2.5/weather?q=`;
 
-export const getIncident = async (req: Request, res: Response): Promise<void> => {
+
+export const getIncident = async (req: Request, res: Response): Promise<Response | void> => {
   try {
     Incident.findAll()
       .then((data: any) => {
@@ -28,7 +29,7 @@ export const addIncident = async (req: Request, res: Response): Promise<Response
 
     let errors: string[] = [];
 
-    let { client_id, incident_desc, city, country } = req.body;
+    let { client_id, incident_desc, city, country } = req.body ; 
 
     if (!client_id) errors.push("Client ID required");
     if (!incident_desc) errors.push("Incident ID required");

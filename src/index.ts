@@ -2,6 +2,8 @@ import express from "express" ;
 import dotenv from "dotenv" ; 
 import { Sequelize } from "sequelize";
 import connKey from "./config/connect";
+import incidentRoutes from "./routes/incident";
+
 
 
 dotenv.config(); 
@@ -23,5 +25,7 @@ sequelize.authenticate().then(() => {
 
 app.use(express.urlencoded({ extended : true })) ; 
 
+
+app.use("/", incidentRoutes);
 
 app.listen ( PORT , () => console.log (`Server running on port ${PORT}`)) ; 

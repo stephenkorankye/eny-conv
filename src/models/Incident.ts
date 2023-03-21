@@ -20,7 +20,7 @@ interface IncidentAttributes {
   weather_report?: object;
 }
 
-const Incident = sequelize.define<any>('incidents', {
+const Incident = sequelize.define<IncidentAttributes | any>('incidents', {
   client_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
